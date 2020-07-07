@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
-import { settings } from 'dotenv';
+import dotenv from 'dotenv';
 
-settings();
-// require('dotenv').settings();
+dotenv.config();
 
 const USER_DB = process.env.USERDB;
 const USER_PASSWD = process.env.USERPASSWD;
@@ -10,12 +9,7 @@ const USER_PASSWD = process.env.USERPASSWD;
 const connectDataBase = async () => {
   try {
     mongoose.connect(
-      'mongodb+srv://' +
-        USER_DB +
-        ':' +
-        USER_PASSWD +
-        '@bootcamp.v8sop.mongodb.net/mybank?retryWrites=true&w=majority',
-
+      `mongodb+srv://${USER_DB}:${USER_PASSWD}@bootcamp.v8sop.mongodb.net/mybank?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
